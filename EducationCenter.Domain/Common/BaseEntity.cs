@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EducationCenter.Domain.Models.Common
+namespace EducationCenter.Domain.Common
 {
     public class BaseEntity
     {

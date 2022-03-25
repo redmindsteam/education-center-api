@@ -1,10 +1,9 @@
-﻿using EducationCenter.Domain.Common;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace EducationCenter.Domain.Models.Entities
+namespace EducationCenter.Service.DTOs.Employee
 {
-    public abstract class Person : BaseEntity
+    public class EmployeeCreationalDTO
     {
         [Required]
         public string Firstname { get; set; }
@@ -24,5 +23,9 @@ namespace EducationCenter.Domain.Models.Entities
         public string Address { get; set; }
 
         public string Description { get; set; }
+
+        public string CardNumber { get; set; }
+
+        public long Salary { get; set; }
     }
 }

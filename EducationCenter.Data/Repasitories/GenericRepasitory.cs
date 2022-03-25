@@ -1,5 +1,6 @@
 ﻿using EducationCenter.Data.DbContexts;
 using EducationCenter.Data.IRepasitories;
+using EducationCenter.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Data.Repasitories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        internal ApplicationDbContext dbContext;
-        internal DbSet<T> dbSet;
+        protected readonly ApplicationDbContext dbContext;
+        protected DbSet<T> dbSet;
         public GenericRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;

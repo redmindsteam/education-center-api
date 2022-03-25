@@ -1,4 +1,4 @@
-﻿using EducationCenter.Domain.Models.Common;
+﻿using EducationCenter.Domain.Common;
 using System.Collections.Generic;
 
 namespace EducationCenter.Domain.Models.Entities
