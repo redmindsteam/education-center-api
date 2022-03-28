@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EducationCenter.Data.Migrations
 {
@@ -11,21 +12,21 @@ namespace EducationCenter.Data.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Middlename = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CardNumber = table.Column<string>(type: "text", nullable: true),
+                    Salary = table.Column<long>(type: "bigint", nullable: false),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Firstname = table.Column<string>(type: "text", nullable: false),
+                    Lastname = table.Column<string>(type: "text", nullable: false),
+                    Middlename = table.Column<string>(type: "text", nullable: true),
+                    BirthDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -36,13 +37,13 @@ namespace EducationCenter.Data.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(12)", maxLength: 12, nullable: true),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,13 +54,13 @@ namespace EducationCenter.Data.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomNumber = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoomNumber = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,18 +71,18 @@ namespace EducationCenter.Data.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Middlename = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Firstname = table.Column<string>(type: "text", nullable: false),
+                    Lastname = table.Column<string>(type: "text", nullable: false),
+                    Middlename = table.Column<string>(type: "text", nullable: true),
+                    BirthDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -92,11 +93,11 @@ namespace EducationCenter.Data.Migrations
                 name: "Subjects",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -107,8 +108,8 @@ namespace EducationCenter.Data.Migrations
                 name: "GroupTeacher",
                 columns: table => new
                 {
-                    GroupsId = table.Column<int>(type: "int", nullable: false),
-                    TeachersId = table.Column<int>(type: "int", nullable: false)
+                    GroupsId = table.Column<int>(type: "integer", nullable: false),
+                    TeachersId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,14 +132,14 @@ namespace EducationCenter.Data.Migrations
                 name: "LessonTimeDetail",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BeginTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
-                    EndTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GroupId = table.Column<int>(type: "int", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BeginTime = table.Column<string>(type: "text", nullable: true),
+                    DayOfWeek = table.Column<int>(type: "integer", nullable: false),
+                    EndTime = table.Column<string>(type: "text", nullable: true),
+                    GroupId = table.Column<int>(type: "integer", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -155,8 +156,8 @@ namespace EducationCenter.Data.Migrations
                 name: "GroupRoom",
                 columns: table => new
                 {
-                    GroupsId = table.Column<int>(type: "int", nullable: false),
-                    RoomsId = table.Column<int>(type: "int", nullable: false)
+                    GroupsId = table.Column<int>(type: "integer", nullable: false),
+                    RoomsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,8 +180,8 @@ namespace EducationCenter.Data.Migrations
                 name: "GroupStudent",
                 columns: table => new
                 {
-                    GroupsId = table.Column<int>(type: "int", nullable: false),
-                    StudentsId = table.Column<int>(type: "int", nullable: false)
+                    GroupsId = table.Column<int>(type: "integer", nullable: false),
+                    StudentsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -203,8 +204,8 @@ namespace EducationCenter.Data.Migrations
                 name: "GroupSubject",
                 columns: table => new
                 {
-                    GroupsId = table.Column<int>(type: "int", nullable: false),
-                    SubjectsId = table.Column<int>(type: "int", nullable: false)
+                    GroupsId = table.Column<int>(type: "integer", nullable: false),
+                    SubjectsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -227,8 +228,8 @@ namespace EducationCenter.Data.Migrations
                 name: "SubjectTeacher",
                 columns: table => new
                 {
-                    SubjectsId = table.Column<int>(type: "int", nullable: false),
-                    TeachersId = table.Column<int>(type: "int", nullable: false)
+                    SubjectsId = table.Column<int>(type: "integer", nullable: false),
+                    TeachersId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -28,8 +28,8 @@ namespace EducationCenter.Api
             });
 
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(
-                    Configuration.GetConnectionString("DevelopmentConnectionString"))
+                options => options.UseNpgsql(
+                    Configuration.GetConnectionString("ProductionPortgreSQLConnectionString"))
                 ) ;
         }
 
