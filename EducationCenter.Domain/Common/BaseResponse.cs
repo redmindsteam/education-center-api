@@ -10,5 +10,10 @@ namespace EducationCenter.Domain.Common
         public TSource Data { get; set; }
 
         public ErrorResponse Error { get; set; }
+
+        public BaseResponse()
+        {
+            Error = new ErrorResponse();
+        }
     }
 }

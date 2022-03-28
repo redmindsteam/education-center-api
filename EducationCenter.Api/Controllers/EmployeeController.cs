@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EducationCenter.Domain.Common;
+using EducationCenter.Domain.Configurations;
+using EducationCenter.Domain.Models.Entities;
+using EducationCenter.Service.DTOs.Employee;
+using EducationCenter.Service.IServices;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EducationCenter.Api.Controllers
 {
@@ -7,36 +13,43 @@ namespace EducationCenter.Api.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        // GET: api/<EmployeeController>
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeController(IEmployeeService employeeService)
+        {
+            this._employeeService = employeeService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<BaseResponse<IEnumerable<Employee>>> Get(
+            [FromQuery] PaginationParams @params)
         {
-            return new string[] { "value1", "value2" };
+            return await _employeeService.GetAllAsync(@params);
         }
 
-        // GET api/<EmployeeController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<BaseResponse<Employee>> Get(int id)
         {
-            return "value";
+            return await _employeeService.GetAsync(x=>x.Id.Equals(id));
         }
 
-        // POST api/<EmployeeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<BaseResponse<Employee>> Post([FromBody] EmployeeCreationalDTO EmployeeDto)
         {
+            return await _employeeService.CreateAsync(EmployeeDto);
         }
 
-        // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<BaseResponse<Employee>> Put(int id, 
+            [FromBody] EmployeeCreationalDTO employeeDto)
         {
+            return await _employeeService.UpdateAsync(id, employeeDto);
         }
 
-        // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<BaseResponse<bool>> Delete(int id)
         {
+            return await _employeeService.DeleteAsync(x => x.Id.Equals(id));
         }
     }
 }

@@ -23,6 +23,8 @@ namespace EducationCenter.Data.Repasitories
         {
             var entry = await dbSet.AddAsync(entity);
 
+            await dbContext.SaveChangesAsync();
+
             return entry.Entity;
         }
 
@@ -34,6 +36,8 @@ namespace EducationCenter.Data.Repasitories
                 return false;
 
             dbSet.Remove(entity);
+
+            await dbContext.SaveChangesAsync();
 
             return true;
         }
@@ -53,6 +57,8 @@ namespace EducationCenter.Data.Repasitories
         public async Task<T> UpdateAsync(T entity)
         {
             var entry = dbSet.Update(entity);
+
+            await dbContext.SaveChangesAsync();
 
             return entry.Entity;
         }

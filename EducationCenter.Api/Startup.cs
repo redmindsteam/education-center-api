@@ -1,4 +1,5 @@
 using EducationCenter.Data.DbContexts;
+using EducationCenter.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,10 +28,7 @@ namespace EducationCenter.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EducationCenter.Api", Version = "v1" });
             });
 
-            services.AddDbContext<ApplicationDbContext>(
-                options => options.UseNpgsql(
-                    Configuration.GetConnectionString("ProductionPortgreSQLConnectionString"))
-                ) ;
+            services.ConfigureServiceLayer(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

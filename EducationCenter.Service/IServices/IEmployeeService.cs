@@ -11,7 +11,7 @@ namespace EducationCenter.Service.IServices
 {
     public interface IEmployeeService
     {
-        Task<BaseResponse<Employee>> CreateAsync(EmployeeCreationalDTO EmployeeDto);
+        Task<BaseResponse<Employee>> CreateAsync(EmployeeCreationalDTO employeeDto);
 
         Task<BaseResponse<Employee>> GetAsync(Expression<Func<Employee, bool>> expression);
 
@@ -20,6 +20,6 @@ namespace EducationCenter.Service.IServices
 
         Task<BaseResponse<bool>> DeleteAsync(Expression<Func<Employee, bool>> expression);
 
-        Task<BaseResponse<Employee>> UpdateAsync(Guid id, EmployeeCreationalDTO EmployeeDto);
+        Task<BaseResponse<Employee>> UpdateAsync(int id, EmployeeCreationalDTO employeeDto);
     }
 }
