@@ -4,6 +4,7 @@ using EducationCenter.Domain.Models.Entities;
 using EducationCenter.Service.DTOs.Employee;
 using EducationCenter.Service.IServices;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,6 +25,7 @@ namespace EducationCenter.Api.Controllers
         public async Task<BaseResponse<IEnumerable<Employee>>> Get(
             [FromQuery] PaginationParams @params)
         {
+            Log.Warning("Salom");
             return await _employeeService.GetAllAsync(@params);
         }
 
