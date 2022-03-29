@@ -1,0 +1,27 @@
+2022-03-30 02:14:34.150 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-30 02:14:34.176 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/index.html - -
+2022-03-30 02:14:34.194 +05:00 [INF] Hosting environment: Development
+2022-03-30 02:14:34.194 +05:00 [INF] Content root path: D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Api
+2022-03-30 02:14:34.412 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - -
+2022-03-30 02:14:34.413 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/index.html - - - 200 - text/html;charset=utf-8 243.4262ms
+2022-03-30 02:14:34.441 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - - 200 11953 application/javascript;+charset=utf-8 14.8754ms
+2022-03-30 02:14:34.633 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - -
+2022-03-30 02:14:34.803 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 170.5689ms
+2022-03-30 02:14:40.634 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Employee?PageNumber=1&PageSize=5 - -
+2022-03-30 02:14:40.665 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.EmployeeController.Get (EducationCenter.Api)'
+2022-03-30 02:14:40.713 +05:00 [INF] Route matched with {action = "Get", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[System.Collections.Generic.IEnumerable`1[EducationCenter.Domain.Models.Entities.Employee]]] Get(EducationCenter.Domain.Configurations.PaginationParams) on controller EducationCenter.Api.Controllers.EmployeeController (EducationCenter.Api).
+2022-03-30 02:14:41.582 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-03-30 02:14:44.290 +05:00 [WRN] Salom
+2022-03-30 02:14:45.697 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)::INT
+FROM "Employees" AS e
+2022-03-30 02:14:45.731 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-03-30 02:14:45.732 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-03-30 02:14:45.787 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."Address", e."BirthDate", e."CardNumber", e."CreatedDate", e."Description", e."Discriminator", e."Email", e."Firstname", e."Lastname", e."Middlename", e."PhoneNumber", e."Salary", e."UpdatedDate"
+FROM "Employees" AS e
+LIMIT @__p_1 OFFSET @__p_0
+2022-03-30 02:14:48.120 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[System.Collections.Generic.IEnumerable`1[[EducationCenter.Domain.Models.Entities.Employee, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-03-30 02:14:50.100 +05:00 [INF] Executed action EducationCenter.Api.Controllers.EmployeeController.Get (EducationCenter.Api) in 9381.4752ms
+2022-03-30 02:14:50.101 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.EmployeeController.Get (EducationCenter.Api)'
+2022-03-30 02:14:50.203 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Employee?PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 9569.6940ms
