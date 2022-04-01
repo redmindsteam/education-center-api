@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EducationCenter.Data.IRepasitories;
+using EducationCenter.Data.IRepositories;
 using EducationCenter.Domain.Common;
 using EducationCenter.Domain.Configurations;
 using EducationCenter.Domain.Models.Entities;
@@ -15,10 +15,10 @@ namespace EducationCenter.Service.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly IEmployeeRepasitory _employeeRepasitory;
+        private readonly IEmployeeRepository _employeeRepasitory;
         private readonly IMapper _mapper;
 
-        public EmployeeService(IEmployeeRepasitory employeeRepasitory, 
+        public EmployeeService(IEmployeeRepository employeeRepasitory, 
             IMapper mapper)
         {
             this._employeeRepasitory = employeeRepasitory;

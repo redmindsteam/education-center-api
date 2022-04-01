@@ -1,5 +1,5 @@
-﻿using EducationCenter.Service.DTOs.Group;
-using System.Text.RegularExpressions;
+﻿using EducationCenter.Domain.Models.Entities;
+using EducationCenter.Service.DTOs.Group;
 
 namespace EducationCenter.Service.IServices
 {

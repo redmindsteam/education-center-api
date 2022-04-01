@@ -5,7 +5,8 @@ namespace EducationCenter.Service.IServices
     public interface IGenericService<TModel, TDTO> 
         : ICreateableService<TModel, TDTO>,
           IUpdateableService<TModel,TDTO>,
-          IReadableService<TDTO>,
+          IReadCollectionableService<TModel>,
+          IReadableService<TModel>,
           IDeleteableService<TModel>
     {
     }

@@ -1,11 +1,6 @@
-﻿using EducationCenter.Data.IRepasitories;
-using EducationCenter.Data.Repasitories;
+﻿using EducationCenter.Data.IRepositories;
+using EducationCenter.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationCenter.Service.Extensions
 {
@@ -13,7 +8,12 @@ namespace EducationCenter.Service.Extensions
     {
         public static void ConfigureRepasitories(this IServiceCollection services)
         {
-            services.AddScoped<IEmployeeRepasitory, EmployeeRepasitory>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using EducationCenter.Data.DbContexts;
-using EducationCenter.Data.IRepasitories;
+using EducationCenter.Data.IRepositories;
 using EducationCenter.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EducationCenter.Data.Repasitories
+namespace EducationCenter.Data.Repositories
 {
-    public class StudentRepasitory : GenericRepository<Student>, IStudentRepasitory
+    public class StudentRepository : GenericRepository<Student>, IStudentRepository
     {
-        public StudentRepasitory(ApplicationDbContext dbContext) : base(dbContext)
+        public StudentRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
         }
 

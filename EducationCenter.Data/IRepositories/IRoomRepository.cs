@@ -1,8 +1,8 @@
 ﻿using EducationCenter.Domain.Models.Entities;
 
-namespace EducationCenter.Data.IRepasitories
+namespace EducationCenter.Data.IRepositories
 {
-    public interface IRoomRepasitory
+    public interface IRoomRepository
         : IGenericRepository<Room>
     {
     }

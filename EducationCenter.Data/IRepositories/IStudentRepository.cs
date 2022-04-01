@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EducationCenter.Data.IRepasitories
+namespace EducationCenter.Data.IRepositories
 {
-    public interface IStudentRepasitory : IGenericRepository<Student>
+    public interface IStudentRepository : IGenericRepository<Student>
     {
         Task<IEnumerable<Student>> GetStudentGroupsAsync(int id);
     }
