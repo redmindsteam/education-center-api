@@ -6,7 +6,6 @@ namespace EducationCenter.Domain.Models.Entities
 {
     public class Group : BaseEntity
     {
-        [MaxLength(12)]
         public string Name { get; set; }
 
         public decimal Price { get; set; }
