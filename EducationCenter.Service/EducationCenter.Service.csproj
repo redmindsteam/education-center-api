@@ -15,4 +15,11 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Subject\" />
+    <Folder Include="DTOs\Room\" />
+    <Folder Include="DTOs\Teacher\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+
 </Project>

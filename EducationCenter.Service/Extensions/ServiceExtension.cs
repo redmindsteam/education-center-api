@@ -9,6 +9,7 @@ namespace EducationCenter.Service.Extensions
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IGroupService, GroupService>();
         }
     }
 }

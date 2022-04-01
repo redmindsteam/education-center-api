@@ -1,5 +1,5 @@
 ﻿using EducationCenter.Data.DbContexts;
-using EducationCenter.Data.IRepasitories;
+using EducationCenter.Data.IRepositories;
 using EducationCenter.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,9 +7,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace EducationCenter.Data.Repasitories
+namespace EducationCenter.Data.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> 
+        : IGenericRepository<T> where T : BaseEntity
     {
         protected readonly ApplicationDbContext dbContext;
         protected DbSet<T> dbSet;
@@ -61,6 +62,11 @@ namespace EducationCenter.Data.Repasitories
             await dbContext.SaveChangesAsync();
 
             return entry.Entity;
+        }
+
+        public async Task<T> FindAsync(int id)
+        {
+            return await dbSet.FindAsync(id);  
         }
     }
 }
