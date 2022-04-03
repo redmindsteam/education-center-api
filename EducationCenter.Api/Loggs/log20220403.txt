@@ -1,0 +1,157 @@
+2022-04-03 22:47:01.674 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-04-03 22:47:01.712 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/index.html - -
+2022-04-03 22:47:01.745 +05:00 [INF] Hosting environment: Development
+2022-04-03 22:47:01.746 +05:00 [INF] Content root path: D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Api
+2022-04-03 22:47:02.043 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - -
+2022-04-03 22:47:02.044 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/index.html - - - 200 - text/html;charset=utf-8 340.3534ms
+2022-04-03 22:47:02.080 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - - 200 11953 application/javascript;+charset=utf-8 23.8251ms
+2022-04-03 22:47:02.388 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - -
+2022-04-03 22:47:02.514 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 125.7764ms
+2022-04-03 22:47:12.174 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Rooms?PageNumber=1&PageSize=10 - -
+2022-04-03 22:47:12.210 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.RoomsController.Get (EducationCenter.Api)'
+2022-04-03 22:47:12.262 +05:00 [INF] Route matched with {action = "Get", controller = "Rooms"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[System.Collections.Generic.IEnumerable`1[EducationCenter.Domain.Models.Entities.Room]]] Get(EducationCenter.Domain.Configurations.PaginationParams) on controller EducationCenter.Api.Controllers.RoomsController (EducationCenter.Api).
+2022-04-03 22:47:13.725 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 22:47:14.552 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)::INT
+FROM "Rooms" AS r
+2022-04-03 22:47:14.582 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 22:47:14.582 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 22:47:14.616 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedDate", r."Description", r."Name", r."RoomNumber", r."UpdatedDate"
+FROM "Rooms" AS r
+LIMIT @__p_1 OFFSET @__p_0
+2022-04-03 22:47:14.628 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[System.Collections.Generic.IEnumerable`1[[EducationCenter.Domain.Models.Entities.Room, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-04-03 22:47:14.648 +05:00 [INF] Executed action EducationCenter.Api.Controllers.RoomsController.Get (EducationCenter.Api) in 2381.5618ms
+2022-04-03 22:47:14.649 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.RoomsController.Get (EducationCenter.Api)'
+2022-04-03 22:47:14.653 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Rooms?PageNumber=1&PageSize=10 - - - 200 - application/json;+charset=utf-8 2478.4298ms
+2022-04-03 22:47:53.623 +05:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Rooms application/json 72
+2022-04-03 22:47:53.624 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api)'
+2022-04-03 22:47:53.627 +05:00 [INF] Route matched with {action = "Post", controller = "Rooms"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[EducationCenter.Domain.Models.Entities.Room]] Post(EducationCenter.Service.DTOs.Room.RoomCreationalDTO) on controller EducationCenter.Api.Controllers.RoomsController (EducationCenter.Api).
+2022-04-03 22:47:53.660 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 22:47:53.856 +05:00 [INF] Executed action EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api) in 228.3869ms
+2022-04-03 22:47:53.857 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api)'
+2022-04-03 22:47:53.858 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+RoomCreationalDTO -> Room
+EducationCenter.Service.DTOs.Room.RoomCreationalDTO -> EducationCenter.Domain.Models.Entities.Room
+   at lambda_method178(Closure , Object , Room , ResolutionContext )
+   at EducationCenter.Service.Services.GenericService`2.CreateAsync(TDTO dto) in D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Service\Services\GenericService.cs:line 30
+   at EducationCenter.Api.Controllers.RoomsController.Post(RoomCreationalDTO EmployeeDto) in D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Api\Controllers\RoomsController.cs:line 39
+   at lambda_method173(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-04-03 22:47:53.964 +05:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Rooms application/json 72 - 500 - text/plain 341.4017ms
+2022-04-03 22:49:56.515 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-04-03 22:49:56.533 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/index.html - -
+2022-04-03 22:49:56.549 +05:00 [INF] Hosting environment: Development
+2022-04-03 22:49:56.549 +05:00 [INF] Content root path: D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Api
+2022-04-03 22:49:56.766 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - -
+2022-04-03 22:49:56.767 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/index.html - - - 200 - text/html;charset=utf-8 235.5972ms
+2022-04-03 22:49:56.793 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - - 200 11953 application/javascript;+charset=utf-8 14.8841ms
+2022-04-03 22:49:56.925 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - -
+2022-04-03 22:49:57.065 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 139.6113ms
+2022-04-03 22:50:10.562 +05:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Rooms application/json 62
+2022-04-03 22:50:10.591 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api)'
+2022-04-03 22:50:10.622 +05:00 [INF] Route matched with {action = "Post", controller = "Rooms"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[EducationCenter.Domain.Models.Entities.Room]] Post(EducationCenter.Service.DTOs.Room.RoomCreationalDTO) on controller EducationCenter.Api.Controllers.RoomsController (EducationCenter.Api).
+2022-04-03 22:50:12.047 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 22:50:12.908 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Rooms" ("CreatedDate", "Description", "Name", "RoomNumber", "UpdatedDate")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2022-04-03 22:50:12.962 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[EducationCenter.Domain.Models.Entities.Room, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-04-03 22:50:12.985 +05:00 [INF] Executed action EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api) in 2357.9781ms
+2022-04-03 22:50:12.985 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.RoomsController.Post (EducationCenter.Api)'
+2022-04-03 22:50:12.990 +05:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Rooms application/json 62 - 200 - application/json;+charset=utf-8 2427.3241ms
+2022-04-03 23:29:55.058 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-04-03 23:29:55.076 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/index.html - -
+2022-04-03 23:29:55.092 +05:00 [INF] Hosting environment: Development
+2022-04-03 23:29:55.092 +05:00 [INF] Content root path: D:\DEVELOPMENT\ASP.NET\API\EducationCenter\EducationCenter.Api
+2022-04-03 23:29:55.314 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - -
+2022-04-03 23:29:55.314 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/index.html - - - 200 - text/html;charset=utf-8 240.5572ms
+2022-04-03 23:29:55.342 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - - 200 11953 application/javascript;+charset=utf-8 15.8161ms
+2022-04-03 23:29:55.513 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - -
+2022-04-03 23:29:55.629 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 116.5151ms
+2022-04-03 23:30:14.529 +05:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Groups application/json 50
+2022-04-03 23:30:14.567 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.GroupsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:14.614 +05:00 [INF] Route matched with {action = "Post", controller = "Groups"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[EducationCenter.Domain.Models.Entities.Group]] Post(EducationCenter.Service.DTOs.Group.GroupCreationalDTO) on controller EducationCenter.Api.Controllers.GroupsController (EducationCenter.Api).
+2022-04-03 23:30:15.932 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 23:30:16.919 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Groups" ("CreatedDate", "Description", "Name", "Price", "UpdatedDate")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2022-04-03 23:30:16.973 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[EducationCenter.Domain.Models.Entities.Group, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-04-03 23:30:16.999 +05:00 [INF] Executed action EducationCenter.Api.Controllers.GroupsController.Post (EducationCenter.Api) in 2380.5907ms
+2022-04-03 23:30:17.000 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.GroupsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:17.004 +05:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Groups application/json 50 - 200 - application/json;+charset=utf-8 2475.2639ms
+2022-04-03 23:30:26.094 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Groups?PageNumber=1&PageSize=10 - -
+2022-04-03 23:30:26.096 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.GroupsController.Get (EducationCenter.Api)'
+2022-04-03 23:30:26.102 +05:00 [INF] Route matched with {action = "Get", controller = "Groups"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[System.Collections.Generic.IEnumerable`1[EducationCenter.Domain.Models.Entities.Group]]] Get(EducationCenter.Domain.Configurations.PaginationParams) on controller EducationCenter.Api.Controllers.GroupsController (EducationCenter.Api).
+2022-04-03 23:30:26.124 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 23:30:26.438 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)::INT
+FROM "Groups" AS g
+2022-04-03 23:30:26.465 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 23:30:26.466 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 23:30:26.495 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT g."Id", g."CreatedDate", g."Description", g."Name", g."Price", g."UpdatedDate"
+FROM "Groups" AS g
+LIMIT @__p_1 OFFSET @__p_0
+2022-04-03 23:30:26.506 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[System.Collections.Generic.IEnumerable`1[[EducationCenter.Domain.Models.Entities.Group, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-04-03 23:30:26.507 +05:00 [INF] Executed action EducationCenter.Api.Controllers.GroupsController.Get (EducationCenter.Api) in 404.8438ms
+2022-04-03 23:30:26.507 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.GroupsController.Get (EducationCenter.Api)'
+2022-04-03 23:30:26.507 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Groups?PageNumber=1&PageSize=10 - - - 200 - application/json;+charset=utf-8 413.2155ms
+2022-04-03 23:30:55.387 +05:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Subjects application/json 21
+2022-04-03 23:30:55.387 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:55.392 +05:00 [INF] Route matched with {action = "Post", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[EducationCenter.Domain.Models.Entities.Subject]] Post(EducationCenter.Service.DTOs.Subject.SubjectCreationalDTO) on controller EducationCenter.Api.Controllers.SubjectsController (EducationCenter.Api).
+2022-04-03 23:30:55.400 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 23:30:55.425 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Subjects" ("CreatedDate", "Name", "UpdatedDate")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2022-04-03 23:30:55.433 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[EducationCenter.Domain.Models.Entities.Subject, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-04-03 23:30:55.435 +05:00 [INF] Executed action EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api) in 42.3961ms
+2022-04-03 23:30:55.435 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:55.435 +05:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Subjects application/json 21 - 200 - application/json;+charset=utf-8 48.0885ms
+2022-04-03 23:30:59.833 +05:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Subjects application/json 17
+2022-04-03 23:30:59.833 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:59.833 +05:00 [INF] Route matched with {action = "Post", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[EducationCenter.Domain.Models.Entities.Subject]] Post(EducationCenter.Service.DTOs.Subject.SubjectCreationalDTO) on controller EducationCenter.Api.Controllers.SubjectsController (EducationCenter.Api).
+2022-04-03 23:30:59.834 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 23:30:59.842 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Subjects" ("CreatedDate", "Name", "UpdatedDate")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2022-04-03 23:30:59.849 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[EducationCenter.Domain.Models.Entities.Subject, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-04-03 23:30:59.849 +05:00 [INF] Executed action EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api) in 15.9439ms
+2022-04-03 23:30:59.849 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.SubjectsController.Post (EducationCenter.Api)'
+2022-04-03 23:30:59.849 +05:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Subjects application/json 17 - 200 - application/json;+charset=utf-8 16.7101ms
+2022-04-03 23:31:10.224 +05:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Subjects?PageNumber=1&PageSize=10 - -
+2022-04-03 23:31:10.224 +05:00 [INF] Executing endpoint 'EducationCenter.Api.Controllers.SubjectsController.Get (EducationCenter.Api)'
+2022-04-03 23:31:10.228 +05:00 [INF] Route matched with {action = "Get", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[EducationCenter.Domain.Common.BaseResponse`1[System.Collections.Generic.IEnumerable`1[EducationCenter.Domain.Models.Entities.Subject]]] Get(EducationCenter.Domain.Configurations.PaginationParams) on controller EducationCenter.Api.Controllers.SubjectsController (EducationCenter.Api).
+2022-04-03 23:31:10.230 +05:00 [INF] Entity Framework Core 5.0.15 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
+2022-04-03 23:31:10.235 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)::INT
+FROM "Subjects" AS s
+2022-04-03 23:31:10.238 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 23:31:10.238 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+2022-04-03 23:31:10.242 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."CreatedDate", s."Name", s."UpdatedDate"
+FROM "Subjects" AS s
+LIMIT @__p_1 OFFSET @__p_0
+2022-04-03 23:31:10.243 +05:00 [INF] Executing ObjectResult, writing value of type 'EducationCenter.Domain.Common.BaseResponse`1[[System.Collections.Generic.IEnumerable`1[[EducationCenter.Domain.Models.Entities.Subject, EducationCenter.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-04-03 23:31:10.245 +05:00 [INF] Executed action EducationCenter.Api.Controllers.SubjectsController.Get (EducationCenter.Api) in 17.3675ms
+2022-04-03 23:31:10.245 +05:00 [INF] Executed endpoint 'EducationCenter.Api.Controllers.SubjectsController.Get (EducationCenter.Api)'
+2022-04-03 23:31:10.246 +05:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Subjects?PageNumber=1&PageSize=10 - - - 200 - application/json;+charset=utf-8 21.7460ms

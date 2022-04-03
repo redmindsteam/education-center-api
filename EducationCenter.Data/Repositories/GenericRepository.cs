@@ -20,7 +20,7 @@ namespace EducationCenter.Data.Repositories
             this.dbSet = dbContext.Set<T>();
         }
 
-        public async Task<T> CreateAsync(T entity)
+        public virtual async Task<T> CreateAsync(T entity)
         {
             var entry = await dbSet.AddAsync(entity);
 
@@ -29,7 +29,7 @@ namespace EducationCenter.Data.Repositories
             return entry.Entity;
         }
 
-        public async Task<bool> DeleteAsync(Expression<Func<T, bool>> expression)
+        public virtual async Task<bool> DeleteAsync(Expression<Func<T, bool>> expression)
         {
             var entity = await dbSet.FirstOrDefaultAsync(expression);
 
@@ -43,19 +43,19 @@ namespace EducationCenter.Data.Repositories
             return true;
         }
 
-        public async Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null)
+        public virtual async Task<IQueryable<T>> GetAllAsync(Expression<Func<T, bool>> expression = null)
         {
             return expression is null ? dbSet : dbSet.Where(expression);
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
+        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> expression)
         {
             var entity = await dbSet.FirstOrDefaultAsync(expression);
 
             return entity;
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public virtual async Task<T> UpdateAsync(T entity)
         {
             var entry = dbSet.Update(entity);
 
@@ -64,7 +64,7 @@ namespace EducationCenter.Data.Repositories
             return entry.Entity;
         }
 
-        public async Task<T> FindAsync(int id)
+        public virtual async Task<T> FindAsync(int id)
         {
             return await dbSet.FindAsync(id);  
         }
