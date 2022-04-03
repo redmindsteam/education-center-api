@@ -2,12 +2,10 @@
 using EducationCenter.Domain.Models.Entities;
 using EducationCenter.Service.DTOs.Employee;
 using EducationCenter.Service.DTOs.Group;
+using EducationCenter.Service.DTOs.Room;
 using EducationCenter.Service.DTOs.Student;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EducationCenter.Service.DTOs.Subject;
+using EducationCenter.Service.DTOs.Teacher;
 
 namespace EducationCenter.Service.Mapping
 {
@@ -17,7 +15,11 @@ namespace EducationCenter.Service.Mapping
         {
             CreateMap<Employee, EmployeeCreationalDTO>().ReverseMap();
             CreateMap<Group, GroupCreationalDTO>().ReverseMap();
+            CreateMap<Room, RoomCreationalDTO>().ReverseMap();
             CreateMap<Student, StudentCreationalDTO>().ReverseMap();
+            CreateMap<Subject, SubjectCreationalDTO>().ReverseMap();
+            CreateMap<Teacher, TeacherCreationalDTO>().ReverseMap();
+
         }
     }
 }
