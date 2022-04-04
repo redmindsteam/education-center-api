@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EducationCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220328165805_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220404110410_M001")]
+    partial class M001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,8 +92,7 @@ namespace EducationCenter.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(12)
-                        .HasColumnType("character varying(12)");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
@@ -165,6 +164,34 @@ namespace EducationCenter.Data.Migrations
                     b.ToTable("Rooms");
                 });
 
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.RoomGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomGroups");
+                });
+
             modelBuilder.Entity("EducationCenter.Domain.Models.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -210,6 +237,37 @@ namespace EducationCenter.Data.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.StudentGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentGroups");
+                });
+
             modelBuilder.Entity("EducationCenter.Domain.Models.Entities.Subject", b =>
                 {
                     b.Property<int>("Id")
@@ -231,34 +289,35 @@ namespace EducationCenter.Data.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("GroupRoom", b =>
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.TeacherGroup", b =>
                 {
-                    b.Property<int>("GroupsId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("GroupId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RoomsId")
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("TeacherId")
                         .HasColumnType("integer");
 
-                    b.HasKey("GroupsId", "RoomsId");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.HasIndex("RoomsId");
+                    b.HasKey("Id");
 
-                    b.ToTable("GroupRoom");
-                });
+                    b.HasIndex("GroupId");
 
-            modelBuilder.Entity("GroupStudent", b =>
-                {
-                    b.Property<int>("GroupsId")
-                        .HasColumnType("integer");
+                    b.HasIndex("TeacherId");
 
-                    b.Property<int>("StudentsId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("GroupsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("GroupStudent");
+                    b.ToTable("TeachersGroups");
                 });
 
             modelBuilder.Entity("GroupSubject", b =>
@@ -274,21 +333,6 @@ namespace EducationCenter.Data.Migrations
                     b.HasIndex("SubjectsId");
 
                     b.ToTable("GroupSubject");
-                });
-
-            modelBuilder.Entity("GroupTeacher", b =>
-                {
-                    b.Property<int>("GroupsId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TeachersId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("GroupsId", "TeachersId");
-
-                    b.HasIndex("TeachersId");
-
-                    b.ToTable("GroupTeacher");
                 });
 
             modelBuilder.Entity("SubjectTeacher", b =>
@@ -320,34 +364,61 @@ namespace EducationCenter.Data.Migrations
                         .HasForeignKey("GroupId");
                 });
 
-            modelBuilder.Entity("GroupRoom", b =>
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.RoomGroup", b =>
                 {
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", null)
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", "Group")
                         .WithMany()
-                        .HasForeignKey("GroupsId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Room", null)
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Room", "Room")
                         .WithMany()
-                        .HasForeignKey("RoomsId")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("GroupStudent", b =>
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.StudentGroup", b =>
                 {
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", null)
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", "Group")
                         .WithMany()
-                        .HasForeignKey("GroupsId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Student", null)
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentsId")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.TeacherGroup", b =>
+                {
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("GroupSubject", b =>
@@ -361,21 +432,6 @@ namespace EducationCenter.Data.Migrations
                     b.HasOne("EducationCenter.Domain.Models.Entities.Subject", null)
                         .WithMany()
                         .HasForeignKey("SubjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("GroupTeacher", b =>
-                {
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Group", null)
-                        .WithMany()
-                        .HasForeignKey("GroupsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EducationCenter.Domain.Models.Entities.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

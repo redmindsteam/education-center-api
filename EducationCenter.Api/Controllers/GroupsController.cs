@@ -7,9 +7,9 @@ namespace EducationCenter.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GroupsController : GenericController<Group, GroupCreationalDTO>
+    public class GroupsController : GenericController<Group, GroupInputDTO>
     {
-        public GroupsController(IGenericService<Group, GroupCreationalDTO> service) : base(service)
+        public GroupsController(IGenericService<Group, GroupInputDTO> service) : base(service)
         {
         }
     }

@@ -34,23 +34,6 @@ namespace EducationCenter.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groups",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(12)", maxLength: 12, nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
@@ -105,97 +88,49 @@ namespace EducationCenter.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GroupTeacher",
-                columns: table => new
-                {
-                    GroupsId = table.Column<int>(type: "integer", nullable: false),
-                    TeachersId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GroupTeacher", x => new { x.GroupsId, x.TeachersId });
-                    table.ForeignKey(
-                        name: "FK_GroupTeacher_Employees_TeachersId",
-                        column: x => x.TeachersId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GroupTeacher_Groups_GroupsId",
-                        column: x => x.GroupsId,
-                        principalTable: "Groups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LessonTimeDetail",
+                name: "Groups",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BeginTime = table.Column<string>(type: "text", nullable: true),
-                    DayOfWeek = table.Column<int>(type: "integer", nullable: false),
-                    EndTime = table.Column<string>(type: "text", nullable: true),
-                    GroupId = table.Column<int>(type: "integer", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    RoomId = table.Column<int>(type: "integer", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LessonTimeDetail", x => x.Id);
+                    table.PrimaryKey("PK_Groups", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LessonTimeDetail_Groups_GroupId",
-                        column: x => x.GroupId,
-                        principalTable: "Groups",
+                        name: "FK_Groups_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "GroupRoom",
+                name: "SubjectTeacher",
                 columns: table => new
                 {
-                    GroupsId = table.Column<int>(type: "integer", nullable: false),
-                    RoomsId = table.Column<int>(type: "integer", nullable: false)
+                    SubjectsId = table.Column<int>(type: "integer", nullable: false),
+                    TeachersId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GroupRoom", x => new { x.GroupsId, x.RoomsId });
+                    table.PrimaryKey("PK_SubjectTeacher", x => new { x.SubjectsId, x.TeachersId });
                     table.ForeignKey(
-                        name: "FK_GroupRoom_Groups_GroupsId",
-                        column: x => x.GroupsId,
-                        principalTable: "Groups",
+                        name: "FK_SubjectTeacher_Employees_TeachersId",
+                        column: x => x.TeachersId,
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GroupRoom_Rooms_RoomsId",
-                        column: x => x.RoomsId,
-                        principalTable: "Rooms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GroupStudent",
-                columns: table => new
-                {
-                    GroupsId = table.Column<int>(type: "integer", nullable: false),
-                    StudentsId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GroupStudent", x => new { x.GroupsId, x.StudentsId });
-                    table.ForeignKey(
-                        name: "FK_GroupStudent_Groups_GroupsId",
-                        column: x => x.GroupsId,
-                        principalTable: "Groups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GroupStudent_Students_StudentsId",
-                        column: x => x.StudentsId,
-                        principalTable: "Students",
+                        name: "FK_SubjectTeacher_Subjects_SubjectsId",
+                        column: x => x.SubjectsId,
+                        principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -225,38 +160,119 @@ namespace EducationCenter.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubjectTeacher",
+                name: "LessonTimeDetail",
                 columns: table => new
                 {
-                    SubjectsId = table.Column<int>(type: "integer", nullable: false),
-                    TeachersId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BeginTime = table.Column<string>(type: "text", nullable: true),
+                    DayOfWeek = table.Column<int>(type: "integer", nullable: false),
+                    EndTime = table.Column<string>(type: "text", nullable: true),
+                    GroupId = table.Column<int>(type: "integer", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectTeacher", x => new { x.SubjectsId, x.TeachersId });
+                    table.PrimaryKey("PK_LessonTimeDetail", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubjectTeacher_Employees_TeachersId",
-                        column: x => x.TeachersId,
+                        name: "FK_LessonTimeDetail_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoomGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    GroupId = table.Column<int>(type: "integer", nullable: false),
+                    RoomId = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RoomGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RoomGroups_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StudentGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    StudentId = table.Column<int>(type: "integer", nullable: false),
+                    GroupId = table.Column<int>(type: "integer", nullable: false),
+                    RegistrationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudentGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StudentGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StudentGroups_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeachersGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TeacherId = table.Column<int>(type: "integer", nullable: false),
+                    GroupId = table.Column<int>(type: "integer", nullable: false),
+                    RegistrationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeachersGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TeachersGroups_Employees_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubjectTeacher_Subjects_SubjectsId",
-                        column: x => x.SubjectsId,
-                        principalTable: "Subjects",
+                        name: "FK_TeachersGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_GroupRoom_RoomsId",
-                table: "GroupRoom",
-                column: "RoomsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GroupStudent_StudentsId",
-                table: "GroupStudent",
-                column: "StudentsId");
+                name: "IX_Groups_RoomId",
+                table: "Groups",
+                column: "RoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GroupSubject_SubjectsId",
@@ -264,55 +280,80 @@ namespace EducationCenter.Data.Migrations
                 column: "SubjectsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GroupTeacher_TeachersId",
-                table: "GroupTeacher",
-                column: "TeachersId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LessonTimeDetail_GroupId",
                 table: "LessonTimeDetail",
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RoomGroups_GroupId",
+                table: "RoomGroups",
+                column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RoomGroups_RoomId",
+                table: "RoomGroups",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentGroups_GroupId",
+                table: "StudentGroups",
+                column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentGroups_StudentId",
+                table: "StudentGroups",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SubjectTeacher_TeachersId",
                 table: "SubjectTeacher",
                 column: "TeachersId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeachersGroups_GroupId",
+                table: "TeachersGroups",
+                column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeachersGroups_TeacherId",
+                table: "TeachersGroups",
+                column: "TeacherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GroupRoom");
-
-            migrationBuilder.DropTable(
-                name: "GroupStudent");
-
-            migrationBuilder.DropTable(
                 name: "GroupSubject");
-
-            migrationBuilder.DropTable(
-                name: "GroupTeacher");
 
             migrationBuilder.DropTable(
                 name: "LessonTimeDetail");
 
             migrationBuilder.DropTable(
+                name: "RoomGroups");
+
+            migrationBuilder.DropTable(
+                name: "StudentGroups");
+
+            migrationBuilder.DropTable(
                 name: "SubjectTeacher");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "TeachersGroups");
 
             migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "Subjects");
 
             migrationBuilder.DropTable(
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
         }
     }
 }

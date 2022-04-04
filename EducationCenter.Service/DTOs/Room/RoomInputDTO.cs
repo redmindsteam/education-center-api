@@ -1,6 +1,6 @@
 ﻿namespace EducationCenter.Service.DTOs.Room
 {
-    public class RoomCreationalDTO
+    public class RoomInputDTO
     {
         public int RoomNumber { get; set; }
 

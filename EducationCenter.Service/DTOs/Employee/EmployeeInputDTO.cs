@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EducationCenter.Service.DTOs.Employee
 {
-    public class EmployeeCreationalDTO
+    public class EmployeeInputDTO
     {
         [Required]
         public string Firstname { get; set; }

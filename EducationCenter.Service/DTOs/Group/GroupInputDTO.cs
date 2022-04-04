@@ -2,7 +2,7 @@
 
 namespace EducationCenter.Service.DTOs.Group
 {
-    public class GroupCreationalDTO
+    public class GroupInputDTO
     {
         [MaxLength(12)]
         public string Name { get; set; }

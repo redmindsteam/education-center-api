@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EducationCenter.Service.DTOs.Student
+namespace EducationCenter.Service.DTOs.Teacher
 {
-    public class StudentCreationalDTO
+    public class TeacherInputDTO
     {
         [Required]
         public string Firstname { get; set; }
@@ -27,5 +23,9 @@ namespace EducationCenter.Service.DTOs.Student
         public string Address { get; set; }
 
         public string Description { get; set; }
+
+        public string CardNumber { get; set; }
+
+        public long Salary { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace EducationCenter.Service.DTOs.Teacher
+namespace EducationCenter.Service.DTOs.Student
 {
-    public class TeacherCreationalDTO
+    public class StudentInputDTO
     {
         [Required]
         public string Firstname { get; set; }
@@ -23,9 +23,5 @@ namespace EducationCenter.Service.DTOs.Teacher
         public string Address { get; set; }
 
         public string Description { get; set; }
-
-        public string CardNumber { get; set; }
-
-        public long Salary { get; set; }
     }
 }
