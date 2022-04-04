@@ -3,15 +3,17 @@ using System;
 using EducationCenter.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EducationCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220404105343_FirstMigration")]
+    partial class FirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,10 +97,15 @@ namespace EducationCenter.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("Groups");
                 });
@@ -355,6 +362,13 @@ namespace EducationCenter.Data.Migrations
                     b.HasDiscriminator().HasValue("Teacher");
                 });
 
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.Group", b =>
+                {
+                    b.HasOne("EducationCenter.Domain.Models.Entities.Room", null)
+                        .WithMany("Groups")
+                        .HasForeignKey("RoomId");
+                });
+
             modelBuilder.Entity("EducationCenter.Domain.Models.Entities.LessonTimeDetail", b =>
                 {
                     b.HasOne("EducationCenter.Domain.Models.Entities.Group", null)
@@ -452,6 +466,11 @@ namespace EducationCenter.Data.Migrations
             modelBuilder.Entity("EducationCenter.Domain.Models.Entities.Group", b =>
                 {
                     b.Navigation("LessonTimeDetails");
+                });
+
+            modelBuilder.Entity("EducationCenter.Domain.Models.Entities.Room", b =>
+                {
+                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,12 +13,12 @@ namespace EducationCenter.Service.Mapping
     {
         public MappingConfigure()
         {
-            CreateMap<Employee, EmployeeCreationalDTO>().ReverseMap();
-            CreateMap<Group, GroupCreationalDTO>().ReverseMap();
-            CreateMap<Room, RoomCreationalDTO>().ReverseMap();
-            CreateMap<Student, StudentCreationalDTO>().ReverseMap();
-            CreateMap<Subject, SubjectCreationalDTO>().ReverseMap();
-            CreateMap<Teacher, TeacherCreationalDTO>().ReverseMap();
+            CreateMap<Employee, EmployeeInputDTO>().ReverseMap();
+            CreateMap<Group, GroupInputDTO>().ReverseMap();
+            CreateMap<Room, RoomInputDTO>().ReverseMap();
+            CreateMap<Student, StudentInputDTO>().ReverseMap();
+            CreateMap<Subject, SubjectInputDTO>().ReverseMap();
+            CreateMap<Teacher, TeacherInputDTO>().ReverseMap();
 
         }
     }

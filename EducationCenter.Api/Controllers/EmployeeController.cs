@@ -8,9 +8,9 @@ namespace EducationCenter.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController
-        : GenericController<Employee, EmployeeCreationalDTO>
+        : GenericController<Employee, EmployeeInputDTO>
     {
-        public EmployeeController(IGenericService<Employee, EmployeeCreationalDTO> service) : base(service)
+        public EmployeeController(IGenericService<Employee, EmployeeInputDTO> service) : base(service)
         {
         }
     }

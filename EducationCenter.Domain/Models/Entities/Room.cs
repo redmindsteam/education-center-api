@@ -1,5 +1,4 @@
 ﻿using EducationCenter.Domain.Common;
-using System.Collections.Generic;
 
 namespace EducationCenter.Domain.Models.Entities
 {
@@ -10,12 +9,5 @@ namespace EducationCenter.Domain.Models.Entities
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public virtual ICollection<Group> Groups { get; set; }
-
-        public Room()
-        {
-            Groups = new HashSet<Group>();
-        }
     }
 }

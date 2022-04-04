@@ -7,9 +7,9 @@ namespace EducationCenter.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SubjectsController : GenericController<Subject, SubjectCreationalDTO>
+    public class SubjectsController : GenericController<Subject, SubjectInputDTO>
     {
-        public SubjectsController(IGenericService<Subject, SubjectCreationalDTO> service) : base(service)
+        public SubjectsController(IGenericService<Subject, SubjectInputDTO> service) : base(service)
         {
         }
     }
