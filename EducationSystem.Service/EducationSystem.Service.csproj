@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Helpers\" />
+    <Folder Include="Common\Extensions\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Middlewares\" />
+    <Folder Include="Common\Mapper\" />
+    <Folder Include="Common\Security\" />
+    <Folder Include="Common\Validations\" />
+    <Folder Include="Interfaces\Common\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
